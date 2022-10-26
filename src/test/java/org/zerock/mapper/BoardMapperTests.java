@@ -19,6 +19,7 @@ public class BoardMapperTests {
 	
 	@Autowired
 	private BoardMapper mapper;
+	//mapper;
 	
 	@Test
 	public void testGetList() {
