@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 import org.zerock.domain.BoardVO;
 
-
+@Mapper
 public interface BoardMapper {
 	
 //	@Select("select * from tbl_board where bno > 0")

@@ -39,15 +39,15 @@
 	</root>
 	
 	<logger name="jdbc.audit">
-		<level value="error" />
+		<level value="info" />
 	</logger>
 	
 	<logger name="jdbc.resultset">
-		<level value="error" />
+		<level value="info" />
 	</logger>
 	
 	<logger name="jdbc.connection">
-		<level value="error" />
+		<level value="info" />
 	</logger>	
 	<!-- Root Logger -->
 	<root>

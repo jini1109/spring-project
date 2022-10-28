@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.sample.mapper.UserMapper;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import com.zaxxer.hikari.HikariConfig;
@@ -15,7 +16,7 @@ import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
 /* @MapperScan(basePackages = {"org.zerock.mapper"}) */
-@MapperScan("org.mybatis.spring.sample.mapper")
+@ComponentScan("org.mybatis.spring.sample")
 public class RootConfig {
 	
 	@Bean
