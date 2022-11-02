@@ -1,5 +1,9 @@
 package org.zerock.config;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -15,8 +19,8 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
-/* @MapperScan(basePackages = {"org.zerock.mapper"}) */
-@ComponentScan("org.mybatis.spring.sample")
+@MapperScan(basePackages = {"org.zerock.mapper"})
+/* @ComponentScan("org.mybatis.spring.sample") */
 public class RootConfig {
 	
 	@Bean
@@ -28,7 +32,16 @@ public class RootConfig {
 		hikariConfig.setUsername("book_ex");
 		hikariConfig.setPassword("book_ex");
 		
+		String JdbcUrl = "jdbc:oracle:thin:@localhost:1521:XE";
+		String userName = "book_ex";
+		String passWord = "book_ex";
+		
 		HikariDataSource dataSource = new HikariDataSource(hikariConfig);
+		try {
+			Connection conn = DriverManager.getConnection(JdbcUrl, userName, passWord);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		return dataSource();
 	}

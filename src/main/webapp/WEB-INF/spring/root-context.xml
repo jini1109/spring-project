@@ -7,7 +7,7 @@
 						http:www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
 	
-	<bean id="dataSource" class="com.zaxxer.hikari.HikariConfig">
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 	
 		<property name="driverClassName"
 			value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
@@ -40,6 +40,7 @@
 		base-package="org.zerock.mapper" /> -->
 		
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="org.mybatis.spring.sample" />
+		<property name="basePackage" value="org.zerock.mapper" />
 	</bean>
+	
 </beans>

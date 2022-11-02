@@ -32,36 +32,58 @@
 		<level value="info" />
 	</logger>
 	
+	<logger name="jdbc.connection">
+		<level value="info" />
+	</logger>
+	<logger name="jdbc.audit"> 
+		<level value="info"/>
+	</logger> 
+    
+	<logger name="jdbc.resultset">
+		<level value="info" />
+	</logger>
+	
+	<logger name="jdbc.sqlonly"> 
+		<level value="info"/>
+	</logger>
+     
+	<logger name="jdbc.resultsettable" > 
+		<level value="info"/>
+	</logger> 
+	
+	<logger name="jdbc.sqltiming" >
+		<level value="info" />
+	</logger> -->
 	<!-- jdbc -->
-	<logger name="jdbc.connection" additivity="false">
-		<level value="warn" />
-		<appender-ref ref="console"/> 
+	<!-- <logger name="jdbc.connection" additivity="false">
+		<level value="info" />
+		<appender-ref ref="console"/>
 	</logger>
 	
 	<logger name="jdbc.audit" additivity="false"> 
-		<level value="warn"/>  
-		<appender-ref ref="console"/> 
+		<level value="info"/>  
+		<appender-ref ref="console"/>
 	</logger> 
     
 	<logger name="jdbc.resultset" additivity="false">
-		<level value="warn" />
-		<appender-ref ref="console"/> 
+		<level value="info" />
+		<appender-ref ref="console"/>
 	</logger>
 	
 	<logger name="jdbc.sqlonly" additivity="false"> 
 		<level value="info"/> 
-		<appender-ref ref="console"/> 
+		<appender-ref ref="console"/>
 	</logger>
      
 	<logger name="jdbc.resultsettable" additivity="false"> 
 		<level value="info"/>  
-		<appender-ref ref="console"/> 
+		<appender-ref ref="console"/>
 	</logger> 
 	
 	<logger name="jdbc.sqltiming" additivity="false">
-		<level value="warn" />
-		<appender-ref ref="console"/> 
-	</logger>
+		<level value="info" />
+		<appender-ref ref="console"/>
+	</logger> -->
 
 	<!-- Root Logger -->
 	<root>
