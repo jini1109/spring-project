@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.List;
 
+import org.apache.log4j.BasicConfigurator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.zerock.domain.BoardVO;
 
 import lombok.Setter;
+import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -22,34 +24,71 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class BoardMapperTests {
 	
-	/*
-	 * private String URL = "jdbc:oracle:thin:@localhost:1521:XE"; private String Id
-	 * = "book_ex"; private String pwd = "book_ex";
-	 */
-	
 	@Setter(onMethod_ = @Autowired)
 	private BoardMapper mapper;
 	
 	@Test
-	public void testGetList() {
-		
+	public void testGetList() { 
+		//BasicConfigurator.configure();
 		log.info(mapper.getList());
 		mapper.getList().forEach(board -> log.info(board));
-		/*
-		 * try( //Class.forName("oracle.jdbc.driver.OracleDriver");
-		 * 
-		 * Connection con = DriverManager.getConnection(URL, Id, pwd)) { log.info(con);
-		 * }catch(Exception e) { fail(e.getMessage()); }
-		 */
 	}
 	
-	/*
-	 * public static void main(String[] args) { try {
-	 * Class.forName("oracle.jdbc.driver.OracleDriver");
-	 * System.out.println("ë“œë¼ì´ë²„ ê²€ìƒ‰ ì„±ê³µ"); }catch (ClassNotFoundException e) {
-	 * System.out.println("ë“œë¼ì´ë²„ ê²€ìƒ‰ ì‹¤íŒ¨"); System.exit(0); } }
-	 */
-	/*
-
-	*/
+	@Test
+	public void testInsert() {
+		//BasicConfigurator.configure();
+		
+		BoardVO board = new BoardVO();
+		board.setTitle("»õ·Î ÀÛ¼ºÇÏ´Â ±Û");
+		board.setContent("»õ·Î ÀÛ¼ºÇÏ´Â ³»¿ë");
+		board.setWriter("newbie");
+		
+		mapper.insert(board);
+		
+		log.info(board);
+	}
+	
+	@Test
+	public void testInsertSelectKey() {
+		//BasicConfigurator.configure();
+		
+		BoardVO board = new BoardVO();
+		board.setTitle("»õ·Î ÀÛ¼ºÇÏ´Â ±Û select key");
+		board.setContent("»õ·Î ÀÛ¼ºÇÏ´Â ³»¿ë select key");
+		board.setWriter("newbie");
+		
+		mapper.insertSelectKey(board);
+		
+		log.info(board);
+	}
+	
+	@Test
+	public void testRead() {
+		//BasicConfigurator.configure();
+		
+		BoardVO board = mapper.read(1L);
+		
+		log.info(board);
+	}
+	
+	@Test
+	public void testDelete() {
+		//BasicConfigurator.configure();
+		
+		log.info("DELETE COUNT: " + mapper.delete(1L));
+	}
+	
+	@Test
+	public void testUpdate() {
+		BasicConfigurator.configure();
+		
+		BoardVO board = new BoardVO();
+		board.setBno(4L);
+		board.setTitle("¼öÁ¤µÈ Á¦¸ñ");
+		board.setContent("¼öÁ¤µÈ ³»¿ë");
+		board.setWriter("user00");
+		
+		int count = mapper.update(board);
+		log.info("UPDATE COUNT: " + count);
+	}
 }

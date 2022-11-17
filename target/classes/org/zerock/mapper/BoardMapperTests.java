@@ -1,16 +1,26 @@
 package org.zerock.mapper;
 
+import static org.junit.Assert.fail;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.List;
+
+import org.apache.log4j.BasicConfigurator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.zerock.domain.BoardVO;
 
 import lombok.Setter;
+import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("root-context.xml")
+@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 @Log4j
 public class BoardMapperTests {
 	
@@ -18,17 +28,23 @@ public class BoardMapperTests {
 	private BoardMapper mapper;
 	
 	@Test
-	public void testGetList() {
+	public void testGetList() { 
+		BasicConfigurator.configure();
+		log.info(mapper.getList());
 		mapper.getList().forEach(board -> log.info(board));
 	}
 	
-	public static void main(String[] args) {
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			System.out.println("ë“œë¼ì´ë²„ ê²€ìƒ‰ ì„±ê³µ");
-		}catch (ClassNotFoundException e) {
-			System.out.println("ë“œë¼ì´ë²„ ê²€ìƒ‰ ì‹¤íŒ¨");
-			System.exit(0);
-		}
+	@Test
+	public void testInsert() {
+		BasicConfigurator.configure();
+		
+		BoardVO board = new BoardVO();
+		board.setTitle("»õ·Î ÀÛ¼ºÇÏ´Â ±Û");
+		board.setContent("»õ·Î ÀÛ¼ºÇÏ´Â ³»¿ë");
+		board.setWriter("newbie");
+		
+		mapper.insert(board);
+		
+		log.info(board);
 	}
 }

@@ -28,8 +28,7 @@ public class DataSourceTests {
 				"book_ex",
 				"book_ex")){
 			
-			log.info(con);
-			
+			log.info(con);		
 		}catch(Exception e) {
 			fail(e.getMessage());
 		}
